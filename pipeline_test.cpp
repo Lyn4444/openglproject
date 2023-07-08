@@ -245,7 +245,7 @@ const GLchar* fragmentCode_1 = "#version 330 core\n"	// 版本信息
 "out vec4 FragColor_1;\n"								//输出是四个浮点数构成的一个向量 RGB+aerfa
 "void main()\n"
 "{\n"
-"FragColor_1 = vec4(0.5f, 0.75f, 0.25f, -1.0f);\n"
+"FragColor_1 = vec4(0.5f, 0.75f, 0.25f, 1.0f);\n"
 "}\n";
 
 const GLint WIDTH = 800, HEIGHT = 600;
