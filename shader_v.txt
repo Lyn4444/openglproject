@@ -1,0 +1,12 @@
+// 顶点着色器（txt），需要把着色器txt一起放到同cpp的同一个目录下
+
+#version 330 core							//		版本声明
+layout(location = 0) in vec3 position;		//		位置变量的属性位置值为0
+layout(location = 1) out vec4 color;		//		颜色变量的属性位置值为1
+
+out vec3 myColor;							//		颜色输出
+void main()
+{
+	gl_position = vec4(position, 1.0f);		//		核心函数（对位置信息赋值，1.0f为透明值）
+	myColor = color;
+}
