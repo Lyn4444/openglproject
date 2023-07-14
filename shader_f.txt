@@ -10,7 +10,5 @@ out vec4 FragColor;						// 输出为4个浮点值构成的一个（4维）向量
 
 void main()
 {
-
-	FragColor = vec4(myColor, 1.0f);	// 核心函数（颜色信息赋值）
-
+	FragColor = vec4(myColor,1.0f);	// 核心函数（颜色信息赋值）
 }

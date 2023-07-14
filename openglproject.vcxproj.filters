@@ -35,6 +35,12 @@
     <Text Include="shader_f.txt">
       <Filter>源文件</Filter>
     </Text>
+    <Text Include="shader_uniform_v.txt">
+      <Filter>源文件</Filter>
+    </Text>
+    <Text Include="shader_uniform_f.txt">
+      <Filter>源文件</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h">

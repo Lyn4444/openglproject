@@ -154,6 +154,8 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="shader_f.txt" />
+    <Text Include="shader_uniform_f.txt" />
+    <Text Include="shader_uniform_v.txt" />
     <Text Include="shader_v.txt" />
   </ItemGroup>
   <ItemGroup>

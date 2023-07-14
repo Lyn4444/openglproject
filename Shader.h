@@ -132,7 +132,7 @@ public:
 
 		// 将string类型的字符串转化成char数组类型
 		const GLchar *vShaderCode = vertexCode.c_str();
-		const GLchar* fShaderCode = fragmentCode.c_str();
+		const GLchar *fShaderCode = fragmentCode.c_str();
 
 		// 顶点着色器
 		vertex = glCreateShader(GL_VERTEX_SHADER);
@@ -183,7 +183,7 @@ public:
 		glDeleteProgram(this->Program);
 	}
 
-	void use()
+	void Use()
 	{
 		glUseProgram(this->Program);
 	}
