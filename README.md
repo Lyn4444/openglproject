@@ -36,3 +36,8 @@ shader_uniform_v.txt shader_uniform_f.txt：使用uniform变量的顶点着色�
 Shader.h: 自定义的着色器类，包含文本文件的读取，文件流转string，再转char数组，顶点着色器、片段着色器和着色器程序对象的创建，链接
 
 ```
+
+## 5.soil_test.cpp
+```
+SOIL2的配置以及纹理的读取，生成和绘制
+```

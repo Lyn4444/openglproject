@@ -27,6 +27,9 @@
     <ClCompile Include="uniform_test.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="soil_test.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="shader_v.txt">
