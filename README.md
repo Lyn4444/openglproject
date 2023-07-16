@@ -38,6 +38,10 @@ Shader.h: 自定义的着色器类，包含文本文件的读取，文件流转s
 ```
 
 ## 5.soil_test.cpp
+
+###### SOIL：简易 OpenGL 图像库（Simple OpenGL Image Library)的缩写，能读取图片并做出相应的处理，需要手动配置
+
+
 ```
 SOIL2的配置以及纹理的读取，生成和绘制
 ```

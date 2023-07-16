@@ -1,0 +1,21 @@
+// 顶点着色器传给片段着色器的只有纹理坐标，但还差纹理对象
+// GLSL有一个供纹理对象使用的内建数据类型，采样器(Sampler)，以纹理类型作为后缀
+
+#version 330 core
+
+in vec3 myColor;
+in vec2 myTextureCoords;
+
+// 输出是四个浮点数构成的一个向量 RGB+aerfa
+out vec4 FragColor;
+// 使用uniform sampler2D把纹理添加到片段着色器中，在主函数中把纹理对象赋值给 “myTexture”
+uniform sampler2D myTexture;
+
+void main()
+{
+	// FragColor = vec4(myColor, 1.0f);
+	// 使用GLSL内建的texture()来采样纹理的颜色
+	// 第一个参数：纹理采样器；第二个参数：对应的纹理坐标
+	// texture()会使用之前设置的 “纹理参数对” 相应的颜色值进行采样。这个片段着色器的输出就是纹理在(插值)纹理坐标上(过滤后的) 颜色
+	FragColor = texture(myTexture, myTextureCoords);	// 采样获得纹理坐标
+}

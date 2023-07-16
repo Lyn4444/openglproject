@@ -1,0 +1,19 @@
+#version 330 core
+
+layout(location = 0) in vec3 position;
+layout(location = 1) in vec3 color;
+layout(location = 2) in vec2 textureCoords;				// 2D纹理坐标只有（s，t）
+
+out vec3 myColor;
+out vec2 myTextureCoords;
+
+void main()
+{
+	gl_Position = vec4(position, 1.0f);
+
+	// 只需要绘制纹理，不需要对图像处理颜色（定义的Shader.h包含对颜色的处理，在对应数组要加上颜色的值）
+	// myColor = color;
+
+	// 要翻转图片，（s，t）=（x，1-y）
+	myTextureCoords = vec2(textureCoords.x, 1-textureCoords.y);
+}

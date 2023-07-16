@@ -7,16 +7,22 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "openglproject", "openglproj
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
+		Release|Win32 = Release|Win32
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BA71709E-376D-4A9C-B202-513E1B7CE4BE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BA71709E-376D-4A9C-B202-513E1B7CE4BE}.Debug|Win32.Build.0 = Debug|Win32
 		{BA71709E-376D-4A9C-B202-513E1B7CE4BE}.Debug|x64.ActiveCfg = Debug|x64
 		{BA71709E-376D-4A9C-B202-513E1B7CE4BE}.Debug|x64.Build.0 = Debug|x64
 		{BA71709E-376D-4A9C-B202-513E1B7CE4BE}.Debug|x86.ActiveCfg = Debug|Win32
 		{BA71709E-376D-4A9C-B202-513E1B7CE4BE}.Debug|x86.Build.0 = Debug|Win32
+		{BA71709E-376D-4A9C-B202-513E1B7CE4BE}.Release|Win32.ActiveCfg = Release|Win32
+		{BA71709E-376D-4A9C-B202-513E1B7CE4BE}.Release|Win32.Build.0 = Release|Win32
 		{BA71709E-376D-4A9C-B202-513E1B7CE4BE}.Release|x64.ActiveCfg = Release|x64
 		{BA71709E-376D-4A9C-B202-513E1B7CE4BE}.Release|x64.Build.0 = Release|x64
 		{BA71709E-376D-4A9C-B202-513E1B7CE4BE}.Release|x86.ActiveCfg = Release|Win32
