@@ -127,7 +127,7 @@ int main()
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		// 显卡中有 N 个纹理单元，纹理单元使得在着色器中可以使用多于一个的纹理，通过把纹理单元赋值给采样器，可以一次绑定多个纹理
-		// 激活 0 号纹理单元(这条语句可以省略，因为纹理单元GL_TEXTURE0默认总是被激活)。最多 16 个通道
+		// 激活 0 号纹理单元(这条语句可以省略，因为纹理单元GL_TEXTURE0默认总是被激活)。OpenGL最多 32 个,不过要考虑显卡.
 		glActiveTexture(GL_TEXTURE0);
 		// 绑定这个纹理到当前激活的纹理目标
 		glBindTexture(GL_TEXTURE_2D, texture);

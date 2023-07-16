@@ -1,0 +1,135 @@
+#include <iostream>
+using namespace std;
+#define GLEW_STATIC	
+#include "Shader.h"
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <SOIL2/SOIL2.h>
+#include <SOIL2/stb_image.h>
+
+
+GLfloat vertices[] =
+{
+	//position				// color				// texture coords(纹理坐标)
+	1.0f, 3.0f, 0.0f,		1.0f, 0.0f, 0.0f,		1.0f, 2.0f,			// 右上顶点		编号0
+	1.0f, -3.0, 0.0f,		0.0f, 1.0f, 0.0f,		1.0f, -1.0f,		// 右下顶点		编号1
+	-1.0f, -3.0f, 0.0f,		0.0f, 0.0f, 1.0f,		0.0f, -1.0f,		// 左下顶点		编号2
+	-1.0f, 3.0f, 0.0f,		0.0f, 0.0f, 0.0f,		0.0f, 2.0f			// 左上顶点		编号3
+	// 这里纹理坐标的范围超过 (0, 0) 到 (1, 1) 的部分会被进行 “纹理环绕” 处理！！！
+};
+
+GLuint indices[] =
+{
+	0, 1, 3,
+	1, 2, 3
+};
+
+const GLint WIDTH = 600, HEIGHT = 600;
+
+int main()
+{
+	glfwInit();
+	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "soil test 2", nullptr, nullptr);
+	int screenWidth, screenHeight;
+	glfwGetFramebufferSize(window, &screenWidth, &screenHeight);
+	glfwMakeContextCurrent(window);
+	glewInit();
+
+	Shader myShader = Shader("shader_soil_v_2.txt", "shader_soil_f_2.txt");
+
+	// 设置VAO,VBO,EBO
+	GLuint VAO, VBO, EBO;
+	glGenVertexArrays(1, &VAO);
+	glGenBuffers(1, &VBO);
+	glGenBuffers(1, &EBO);
+	glBindVertexArray(VAO);
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
+	// 设置链接顶点属性
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)0);
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+	glEnableVertexAttribArray(1);
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (GLvoid*)(6 * sizeof(GLfloat)));
+	glEnableVertexAttribArray(2);
+
+	// 读取纹理
+	int width, height;
+	unsigned char* image_1 = SOIL_load_image("texture_image_1.png", &width, &height, 0, SOIL_LOAD_RGBA);
+	unsigned char* image_2 = SOIL_load_image("texture_image_2.png", &width, &height, 0, SOIL_LOAD_RGBA);
+
+	// 生成纹理
+	GLuint texture_1, texture_2;
+	glGenTextures(1, &texture_1);
+	glBindTexture(GL_TEXTURE_2D, texture_1);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image_1);
+	glGenerateMipmap(GL_TEXTURE_2D);
+
+	glGenTextures(1, &texture_2);
+	glBindTexture(GL_TEXTURE_2D, texture_2);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image_2);
+	glGenerateMipmap(GL_TEXTURE_2D);
+
+	// 释放图形内存
+	SOIL_free_image_data(image_1);
+	SOIL_free_image_data(image_2);
+
+	// 设置纹理环绕方式，s坐标和t坐标
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+	// 设置纹理过滤
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+	// 设置绑定uninform变量
+	myShader.Use();
+	// 只需要设置一次,放在渲染循环之前
+	// 告诉名为“myTexture_1”的着色器采样器(关键字为Sampler2D) 属于纹理单元0
+	glUniform1i(glGetUniformLocation(myShader.Program, "myTexture_1"), 0);
+	// 告诉名为“myTexture_2”的着色器采样器(关键字为Sampler2D) 属于纹理单元1
+	glUniform1i(glGetUniformLocation(myShader.Program, "myTexture_2"), 1);
+
+	// 计数器
+	int cnt = 0;
+	// 纹理切换标志
+	int flag = 1;
+	// N 越大，位移/交替的速度都会变慢
+	int N = 2000;
+
+	while (!glfwWindowShouldClose(window))
+	{
+		glViewport(0, 0, screenWidth, screenHeight);
+		glfwPollEvents();
+
+		glClearColor(0.5f, 0.8f, 0.5f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+
+		// 激活绑定0和1纹理单元
+		glActiveTexture(GL_TEXTURE0);
+
+
+
+
+	}
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+

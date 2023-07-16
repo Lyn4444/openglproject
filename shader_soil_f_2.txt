@@ -1,0 +1,19 @@
+#version 330 core
+
+in vec2 myTextureCoords;
+
+out vec4 FragColor;
+
+// 采样器并随时间变换
+uniform sampler2D myTexture_1;
+uniform sampler2D myTexture_2;
+uniform float time;
+
+void main()
+{
+
+	// mix函数根据第三个参数来对前两个参数进行线性插值（如果第三个值是0.0，它会返回第一个输入；如果是1.0，会返回第二个输入值。0.2会返回 80% 的第一个输入颜色和 20% 的第二个输入颜色，即返回两个纹理的混合色。）
+	// 第3个参数设置为time是 后面要实现交替变换而设置的一个变化范围为[0.0 , 1.0]的 float 类型的变量
+	FragColor = mix(texture(myTexture_1, myTextureCoords), texture(myTexture_2, myTextureCoords), time);
+
+}

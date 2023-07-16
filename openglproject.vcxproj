@@ -84,7 +84,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\OpenGL\SOIL2TOOL\include;D:\OpenGL\glfw\include;D:\OpenGL\glew\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Users\30770\source\repos\openglproject\glm;D:\OpenGL\SOIL2TOOL\include;D:\OpenGL\glfw\include;D:\OpenGL\glew\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -161,7 +161,9 @@
     <ClCompile Include="soil_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="soil_test_2.cpp" />
+    <ClCompile Include="soil_test_2.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="uniform_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -170,16 +172,15 @@
   <ItemGroup>
     <Text Include="shader_f.txt" />
     <Text Include="shader_soil_f.txt" />
+    <Text Include="shader_soil_f_2.txt" />
     <Text Include="shader_soil_v.txt" />
+    <Text Include="shader_soil_v_2.txt" />
     <Text Include="shader_uniform_f.txt" />
     <Text Include="shader_uniform_v.txt" />
     <Text Include="shader_v.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="C:\Users\30770\Desktop\texture_image.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

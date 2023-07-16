@@ -53,15 +53,16 @@
     <Text Include="shader_soil_v.txt">
       <Filter>源文件</Filter>
     </Text>
+    <Text Include="shader_soil_f_2.txt">
+      <Filter>源文件</Filter>
+    </Text>
+    <Text Include="shader_soil_v_2.txt">
+      <Filter>源文件</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h">
       <Filter>头文件</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="C:\Users\30770\Desktop\texture_image.jpg">
-      <Filter>资源文件</Filter>
-    </Image>
   </ItemGroup>
 </Project>
