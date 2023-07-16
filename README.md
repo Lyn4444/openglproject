@@ -27,6 +27,12 @@ glut的使用示例
 
 ###### EBO：解决同一顶点多次调用的问题，与VBO类似，EBO存储的内容是顶点位置的索引indices，当需要使用重复的顶点是通过顶点的位置索引来调用顶点， 而不是对重复的顶点信息重复记录调用
 
+`glUniform`：<br />
+1）如`glUniform1f(GLint location,  GLfloat v0)`,为当前程序对象指定Uniform变量的值。第一个参数为location，是指明要更改的uniform变量的位置，剩下的是指明在指定的uniform变量中要使用的新值<br />
+2)如`glUniformMatrix2fv(GLint location,  GLsizei count,  GLboolean transpose,  const GLfloat *value)`,count为指明要更改的元素个数。如果目标uniform变量不是一个数组，那么这个值应该设为1；如果是数组，则应该设置为>=1；value为指定一个具有count个数值的数组指针，用来更新指定的uniform变量。
+
+
+
 ```
 着色器使用示例 （GLSL Uniform）绘制彩色三角形，使用uniform变量的变色正方形，EBO(索引缓冲对象)
 

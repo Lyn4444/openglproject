@@ -4,7 +4,7 @@ using namespace std;
 #include "Shader.h"
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-#include <glm/glm.hpp>
+#include <glm/glm.hpp>								// OpenGL Mathematics,使用矩阵运算
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <SOIL2/SOIL2.h>
@@ -101,7 +101,7 @@ int main()
 	// 纹理切换标志
 	int flag = 1;
 	// N 越大，位移/交替的速度都会变慢
-	int N = 2000;
+	int N = 200;
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -113,18 +113,65 @@ int main()
 
 		// 激活绑定0和1纹理单元
 		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, texture_1);
+		glActiveTexture(GL_TEXTURE1);
+		glBindTexture(GL_TEXTURE_2D, texture_2);
 
+		// 每一次循环的变化
+		cnt += 1;
+		// 设置重复循环，在速度最慢时重新开始
+		if (cnt >= 2 * N)
+		{
+			cnt = 0;
+		}
+		// 设置纹理循环交替标志
+		if (cnt == 0 || cnt == N)
+		{
+			flag = -flag;
+		}
 
+		// 平移变化实现
+		// 初始化单位矩阵
+		glm::mat4 startMatrix = glm::mat4(1.0f);
+		// 单位矩阵和一个位移向量传递给glm::translate()函数,得到的向量应该是(startMatrix.x + 0.0f, startMatrix.y + 1.0f - cnt*1.0/N, startMatrix.z + 0.0f)
+		// 即(原始矩阵的x+x方向上的偏量，原始矩阵的y+y方向上的偏量，原始矩阵的z+z方向上的偏量)
+		glm::mat4 transform = glm::translate(startMatrix, glm::vec3(0.0f, 1.0f - cnt * 1.0 / N, 0.0f));
 
+		// 交替变换的实现
+		int vextexLocation = glGetUniformLocation(myShader.Program, "time");
+		if (flag == 1)
+		{
+			// 从纹理1 逐渐交替到纹理2
+			glUniform1i(vextexLocation, cnt * 1.0 / N);
+		}
+		else
+		{
+			// 从纹理2 逐渐交替到纹理1
+			glUniform1i(vextexLocation, 2.0 - cnt * 1.0 / N);
+		}
+
+		unsigned int transformLocation = glGetUniformLocation(myShader.Program, "transform");
+		// 将transform的值传递到uniform 的transform变量
+		glUniformMatrix4fv(transformLocation, 1, GL_FALSE, glm::value_ptr(transform));
+
+		// 绘制图形
+		glBindVertexArray(VAO);									
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);				
+		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);	
+		glBindVertexArray(0);									
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);				
+		glBindTexture(GL_TEXTURE_2D, 0);
+
+		glfwSwapBuffers(window);
 
 	}
 
+	glDeleteVertexArrays(1, &VAO);
+	glDeleteBuffers(1, &VBO);
+	glDeleteBuffers(1, &EBO);
 
-
-
-
-
-
+	glfwTerminate();
+	return 0;
 
 
 }
