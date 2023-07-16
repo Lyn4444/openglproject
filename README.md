@@ -1,4 +1,4 @@
-# openglproject
+# openglproject：the practice project of OpenGL
 ## 1.openglproject.cpp
 ```
 glfw 和 glew的使用示例
