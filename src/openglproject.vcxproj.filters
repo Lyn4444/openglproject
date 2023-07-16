@@ -33,6 +33,9 @@
     <ClCompile Include="soil_test_2.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="transform_3D.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="shader_v.txt">
