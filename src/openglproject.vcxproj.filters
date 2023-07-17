@@ -62,6 +62,12 @@
     <Text Include="shader_soil_v_2.txt">
       <Filter>源文件</Filter>
     </Text>
+    <Text Include="shader_transform_3D_f.txt">
+      <Filter>源文件</Filter>
+    </Text>
+    <Text Include="shader_transform_3D_v.txt">
+      <Filter>源文件</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h">
