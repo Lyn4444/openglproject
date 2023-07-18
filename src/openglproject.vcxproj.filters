@@ -36,6 +36,9 @@
     <ClCompile Include="transform_3D.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="camera_test.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="shader_v.txt">
@@ -68,9 +71,18 @@
     <Text Include="shader_transform_3D_v.txt">
       <Filter>源文件</Filter>
     </Text>
+    <Text Include="shader_camera_f.txt">
+      <Filter>源文件</Filter>
+    </Text>
+    <Text Include="shader_camera_v.txt">
+      <Filter>源文件</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

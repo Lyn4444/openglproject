@@ -1,0 +1,17 @@
+#version 330 core
+
+layout(location = 0) in vec3 position;
+layout(location = 1) in vec3 color;
+
+out vec3 myColor;
+uniform mat4 transform;
+uniform mat4 projection;
+uniform mat4 view;
+
+void main()
+{
+	myColor = color;
+	// gl_Position = 透视投影（projection） * 观测（view） * 变换（transform） * 原始行向量；
+	gl_Position = projection * view * transform * vec4(position, 1.0f);
+
+}
