@@ -72,3 +72,8 @@ Camera.h：摄像机配置的头文件
 projection：投影矩阵，view：观察矩阵，transform：变换矩阵
 欧拉角：可以表示3D空间中任何旋转的3个值。俯仰角(Pitch)：x轴；偏航角(Yaw)：y轴；滚转角(Roll)：z轴
 ```
+
+## 9.light_test.cpp
+```
+冯氏光照模型
+```
