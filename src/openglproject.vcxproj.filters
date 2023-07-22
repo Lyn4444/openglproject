@@ -39,6 +39,9 @@
     <ClCompile Include="camera_test.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="light_test.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="shader_v.txt">

@@ -1,7 +1,6 @@
 #pragma once
 #include <iostream>
 using namespace std;
-#include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/glm.hpp>
@@ -28,9 +27,9 @@ enum Camera_Movement
 
 
 // 默认的摄像机参数
-const float SPEED = 2.5f;       // 初始速度
+const float SPEED = 0.025f;       // 初始速度
 const float ZOOM = 45.0f;       // 视角近平面
-const float SENSITIVITY = 0.1f;
+const float SENSITIVITY = 0.05f;
 // 默认改变摄像机位置的参数
 const float YAW = -90.0f;       // 摄像头的偏航角
 const float PITCH = 0.0f;       // 摄像头的俯仰角
@@ -59,7 +58,7 @@ public:
     // 只需要Up_Y和Front_Z，通过叉乘得到Right_X（右手原则）,设置Front_Z方向为Z轴的反方向
     // 使用向量初始化
     Camera(glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3 Up_Y = glm::vec3(0.0f, 1.0f, 0.0f)) 
-        :Front_Z(glm::vec3(0.0f, 0.0f, -1.0f)), MoveSpeed(SPEED), MouseSensitivity(SENSITIVITY), Zoom(ZOOM), Yaw(YAW), Pitch(PITCH)
+        :Front_Z(glm::vec3(0.0f, 0.0f, -3.0f)), MoveSpeed(SPEED), MouseSensitivity(SENSITIVITY), Zoom(ZOOM), Yaw(YAW), Pitch(PITCH)
     {
         this->position = position;
         this->WorldUp = Up_Y;
@@ -93,7 +92,8 @@ public:
         return glm::lookAt(this->position, (this->position + this->Front_Z), this->Up_Y);
     }
 
-    // 摄像机位置的移动，改变position，通过键盘
+    // 控制摄像机位置的移动，改变position，通过键盘
+    // 因为是控制摄像机的移动，所以看到物体的移动方向是相反的
     void ProcessKeyboard(Camera_Movement direction, float deltaTime)
     {
         // 移动速度/每次移动步长匹配问题:速度设置成常量的话，会因为使用者配置的不同，有些人可能移动很快，而有些人会移动很慢，很影响使用
@@ -137,11 +137,11 @@ public:
         xoffset *= this->MouseSensitivity;
         yoffset *= this->MouseSensitivity;
 
-        // 更改Pitch与Yaw的值
-        this->Yaw = float(xoffset);
-        this->Pitch = float(yoffset);
+        // 通过添加，更改Pitch与Yaw的值
+        this->Yaw += float(xoffset);
+        this->Pitch += float(yoffset);
 
-        // 对俯仰角度加以限制，确保正常显示，角度范围在（-89.0f，89.0f）之间
+        // 对俯仰角度加以限制，确保正常显示，角度范围在（-89.0f，45.0f）之间
         if (constrainPitch)
         {
             if (this->Pitch > 89.0f)
@@ -160,7 +160,7 @@ public:
     // 缩放摄像机视角,通过鼠标滚轮
     void ProcessMouseScroll(double yoffset)
     {
-        if (this->Zoom >= 1.0f && this->Zoom <= 90.0f)
+        if (this->Zoom >= 1.0f && this->Zoom <= 45.0f)
         {
             this->Zoom -= float(yoffset);
         }
@@ -168,9 +168,9 @@ public:
         {
             this->Zoom = 1.0f;
         }
-        if (this->Zoom >= 90.0f)
+        if (this->Zoom >= 45.0f)
         {
-            this->Zoom = 90.0f;
+            this->Zoom = 45.0f;
         }
     }
 

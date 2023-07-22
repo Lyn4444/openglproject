@@ -64,7 +64,7 @@ GLfloat deltaTime = 0.0f;
 GLfloat lastTime = 0.0f;
 
 // 初始化摄像机的位置
-Camera camera = Camera(glm::vec3(0.0f, 0.0f, 3.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+Camera camera = Camera(glm::vec3(0.0f, 0.0f, 5.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
 //初始化鼠标光标的位置在屏幕中心
 GLdouble lastX = WIDTH / 2.0f;
@@ -172,6 +172,9 @@ int main()
     // 当窗口调整大小的时候调用这个函数
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
+    // 隐藏鼠标的光标 光标会一直停留在窗口中
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
     //监听鼠标移动事件 回调鼠标响应函数
     glfwSetCursorPosCallback(window, mouse_callback);
     //监听鼠标滚轮的移动 回调鼠标滚轮函数
@@ -225,6 +228,8 @@ int main()
 
         glm::mat4 projection;
 
+        glm::mat4 viewMatrix = camera.GetViewMatrix();
+
         // glm::perspective函数创建透视投影矩阵（通过把观察空间投影到世界空间得到的裁剪空间）
         // 第一个参数：观察空间的大小（视野大小）
         // 第二个参数：宽高比。可由窗口的宽除以高所得。
@@ -233,10 +238,10 @@ int main()
         // 通过传递变化的Zoom值作为视角角度，实现缩放功能
         projection = glm::perspective(glm::radians(camera.Zoom), (GLfloat)WIDTH / (GLfloat)HEIGHT, 0.1f, 100.0f);
 
+        
+
         for (int i = 0; i < 2; i++) {
             glm::mat4 transform;
-            glm::mat4 viewMatrix = camera.GetViewMatrix();
-
             if (i == 0)
             {
                 transform = glm::rotate(transform, currentTime, glm::vec3(0.2f, 1.0f, 0.0f));
@@ -260,7 +265,7 @@ int main()
 
         glBindVertexArray(0);
         glfwSwapBuffers(window);
-
+        glfwPollEvents();
     }
 
 
@@ -271,4 +276,3 @@ int main()
     glfwTerminate();
     return 0;
 }
-
