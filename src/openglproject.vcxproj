@@ -181,6 +181,10 @@
     <Text Include="shader_camera_f.txt" />
     <Text Include="shader_camera_v.txt" />
     <Text Include="shader_f.txt" />
+    <Text Include="light_f.txt" />
+    <Text Include="light_v.txt" />
+    <Text Include="shader_light_f.txt" />
+    <Text Include="shader_light_v.txt" />
     <Text Include="shader_soil_f.txt" />
     <Text Include="shader_soil_f_2.txt" />
     <Text Include="shader_soil_v.txt" />
@@ -193,6 +197,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="LightPoint.h" />
     <ClInclude Include="Shader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

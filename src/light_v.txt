@@ -1,0 +1,13 @@
+#version 330 core
+
+layout(location=0) in vec3 position;
+
+uniform mat4 transform_light;
+uniform mat4 project_light;
+uniform mat4 view_light;
+
+void main()
+{
+
+	gl_position = project_light * view_light * transform_light * vec4(position, 1.0f);
+}

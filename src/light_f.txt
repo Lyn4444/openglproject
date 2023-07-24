@@ -1,0 +1,10 @@
+#version 330 core 
+
+uniform vec3 lightColor;
+out vec4 FragColor;
+
+void main()
+{
+	// light为白色光源
+	FragColor = vec4(lightColor, 1.0f);
+}
