@@ -7,49 +7,49 @@
 
 
 // 立方体坐标
-float vertices[] = {
-    // x、y、z 坐标				// color
-    -0.5f, -0.5f, -0.5f,		1.0f, 0.0f, 0.0f,	// red 红色面
-     0.5f, -0.5f, -0.5f,		1.0f, 0.0f, 0.0f,
-     0.5f,  0.5f, -0.5f,		1.0f, 0.0f, 0.0f,
-     0.5f,  0.5f, -0.5f,		1.0f, 0.0f, 0.0f,
-    -0.5f,  0.5f, -0.5f,		1.0f, 0.0f, 0.0f,
-    -0.5f, -0.5f, -0.5f,		1.0f, 0.0f, 0.0f,
+float vertices_light[] = {
+    // x、y、z 坐标
+    -0.5f, -0.5f, -0.5f,
+     0.5f, -0.5f, -0.5f,
+     0.5f,  0.5f, -0.5f,
+     0.5f,  0.5f, -0.5f,
+    -0.5f,  0.5f, -0.5f,
+    -0.5f, -0.5f, -0.5f,
 
-    -0.5f, -0.5f,  0.5f,		0.0f, 1.0f, 0.0f,	// green 绿色面
-     0.5f, -0.5f,  0.5f,		0.0f, 1.0f, 0.0f,
-     0.5f,  0.5f,  0.5f,		0.0f, 1.0f, 0.0f,
-     0.5f,  0.5f,  0.5f,		0.0f, 1.0f, 0.0f,
-    -0.5f,  0.5f,  0.5f,		0.0f, 1.0f, 0.0f,
-    -0.5f, -0.5f,  0.5f,		0.0f, 1.0f, 0.0f,
+    -0.5f, -0.5f,  0.5f,
+     0.5f, -0.5f,  0.5f,
+     0.5f,  0.5f,  0.5f,
+     0.5f,  0.5f,  0.5f,
+    -0.5f,  0.5f,  0.5f,
+    -0.5f, -0.5f,  0.5f,
 
-    -0.5f,  0.5f,  0.5f,		0.0f, 0.0f, 1.0f,	// blue 蓝色面
-    -0.5f,  0.5f, -0.5f,		0.0f, 0.0f, 1.0f,
-    -0.5f, -0.5f, -0.5f,		0.0f, 0.0f, 1.0f,
-    -0.5f, -0.5f, -0.5f,		0.0f, 0.0f, 1.0f,
-    -0.5f, -0.5f,  0.5f,		0.0f, 0.0f, 1.0f,
-    -0.5f,  0.5f,  0.5f,		0.0f, 0.0f, 1.0f,
+    -0.5f,  0.5f,  0.5f,
+    -0.5f,  0.5f, -0.5f,
+    -0.5f, -0.5f, -0.5f,
+    -0.5f, -0.5f, -0.5f,
+    -0.5f, -0.5f,  0.5f,
+    -0.5f,  0.5f,  0.5f,
 
-     0.5f,  0.5f,  0.5f,		1.0f, 1.0f, 0.0f,	// yellow 黄色面
-     0.5f,  0.5f, -0.5f,		1.0f, 1.0f, 0.0f,
-     0.5f, -0.5f, -0.5f,		1.0f, 1.0f, 0.0f,
-     0.5f, -0.5f, -0.5f,		1.0f, 1.0f, 0.0f,
-     0.5f, -0.5f,  0.5f,		1.0f, 1.0f, 0.0f,
-     0.5f,  0.5f,  0.5f,		1.0f, 1.0f, 0.0f,
+     0.5f,  0.5f,  0.5f,
+     0.5f,  0.5f, -0.5f,
+     0.5f, -0.5f, -0.5f,
+     0.5f, -0.5f, -0.5f,
+     0.5f, -0.5f,  0.5f,
+     0.5f,  0.5f,  0.5f,
 
-    -0.5f, -0.5f, -0.5f,		1.0f, 0.0f, 1.0f,	// purple 紫色面
-     0.5f, -0.5f, -0.5f,		1.0f, 0.0f, 1.0f,
-     0.5f, -0.5f,  0.5f,		1.0f, 0.0f, 1.0f,
-     0.5f, -0.5f,  0.5f,		1.0f, 0.0f, 1.0f,
-    -0.5f, -0.5f,  0.5f,		1.0f, 0.0f, 1.0f,
-    -0.5f, -0.5f, -0.5f,		1.0f, 0.0f, 1.0f,
+    -0.5f, -0.5f, -0.5f,
+     0.5f, -0.5f, -0.5f,
+     0.5f, -0.5f,  0.5f,
+     0.5f, -0.5f,  0.5f,
+    -0.5f, -0.5f,  0.5f,
+    -0.5f, -0.5f, -0.5f,
 
-    -0.5f,  0.5f, -0.5f,		0.0f, 1.0f, 1.0f,	// cyan 青色面
-     0.5f,  0.5f, -0.5f,		0.0f, 1.0f, 1.0f,
-     0.5f,  0.5f,  0.5f,		0.0f, 1.0f, 1.0f,
-     0.5f,  0.5f,  0.5f,		0.0f, 1.0f, 1.0f,
-    -0.5f,  0.5f,  0.5f,		0.0f, 1.0f, 1.0f,
-    -0.5f,  0.5f, -0.5f,		0.0f, 1.0f, 1.0f,
+    -0.5f,  0.5f, -0.5f,
+     0.5f,  0.5f, -0.5f,
+     0.5f,  0.5f,  0.5f,
+     0.5f,  0.5f,  0.5f,
+    -0.5f,  0.5f,  0.5f,
+    -0.5f,  0.5f, -0.5f,
 };
 
 class LightPoint
@@ -74,10 +74,10 @@ private:
         glGenBuffers(1, &light_VBO);
         glBindVertexArray(light_VAO);
         glBindBuffer(GL_ARRAY_BUFFER, light_VBO);
-        glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(vertices_light), vertices_light, GL_STATIC_DRAW);
 
         // 设置链接顶点属性
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat),(GLvoid*)0);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat),(GLvoid*)0);
 
         glEnableVertexAttribArray(0);
     }

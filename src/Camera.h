@@ -58,7 +58,7 @@ public:
     // 只需要Up_Y和Front_Z，通过叉乘得到Right_X（右手原则）,设置Front_Z方向为Z轴的反方向
     // 使用向量初始化
     Camera(glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3 Up_Y = glm::vec3(0.0f, 1.0f, 0.0f)) 
-        :Front_Z(glm::vec3(0.0f, 0.0f, -3.0f)), MoveSpeed(SPEED), MouseSensitivity(SENSITIVITY), Zoom(ZOOM), Yaw(YAW), Pitch(PITCH)
+        :Front_Z(glm::vec3(0.0f, 0.0f, -5.0f)), MoveSpeed(SPEED), MouseSensitivity(SENSITIVITY), Zoom(ZOOM), Yaw(YAW), Pitch(PITCH)
     {
         this->position = position;
         this->WorldUp = Up_Y;
@@ -67,7 +67,7 @@ public:
 
     // 使用标量初始化
     Camera(float posX, float posY, float posZ, float upX, float upY, float upZ)
-        :Front_Z(glm::vec3(0.0f, 0.0f, -1.0f)), MoveSpeed(SPEED), MouseSensitivity(SENSITIVITY), Zoom(ZOOM), Yaw(YAW), Pitch(PITCH)
+        :Front_Z(glm::vec3(0.0f, 0.0f, -5.0f)), MoveSpeed(SPEED), MouseSensitivity(SENSITIVITY), Zoom(ZOOM), Yaw(YAW), Pitch(PITCH)
     {
         this->position = glm::vec3(posX, posY, posZ);
         this->Up_Y = glm::vec3(upX, upY, upZ);
