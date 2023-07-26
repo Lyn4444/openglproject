@@ -27,9 +27,9 @@ enum Camera_Movement
 
 
 // 默认的摄像机参数
-const float SPEED = 0.025f;       // 初始速度
+const float SPEED = 0.5f;       // 初始速度
 const float ZOOM = 45.0f;       // 视角近平面
-const float SENSITIVITY = 0.05f;
+const float SENSITIVITY = 0.1f;
 // 默认改变摄像机位置的参数
 const float YAW = -90.0f;       // 摄像头的偏航角
 const float PITCH = 0.0f;       // 摄像头的俯仰角

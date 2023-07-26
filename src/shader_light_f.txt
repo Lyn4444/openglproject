@@ -22,7 +22,7 @@ void main()
 
 	// 漫反射光照
 	vec3 diffuseLight = normalize(LightPos - FragPos);
-	float diffuseStrength = max(dot(FragNormal, diffuseLight), 0.0);
+	float diffuseStrength = 0.8 * max(dot(FragNormal, diffuseLight), 0.0);
 	vec3 diffuse = vec3(diffuseStrength) * myColor;
 
 	// 镜面反射光照（亮点）
@@ -30,8 +30,10 @@ void main()
 	vec3 reflectLight = reflect(-diffuseLight, FragNormal);
 	// 镜面强度变量，给镜面高光一个中等亮度颜色，让它不要产生过度的影响。
 	float specularStrength = 0.8;
+	// 观察视角方向向量
+	vec3 CameraDir = normalize(CameraPos - FragPos);
 	// 计算镜面分量,取32 次幂， 32 是镜面反射光的反光度（一个物体的反光度越高，反射光的能力越强，散射得越少，高光点就会越小。）
-	vec3 specular = vec3(specularStrength) * pow(max(dot(CameraPos, reflectLight), 0.0), 32);
+	vec3 specular = vec3(specularStrength) * pow(max(dot(vec3(CameraDir), reflectLight), 0.0), 32) * myColor;
 
 	FragColor = vec4(ambient + diffuse + specular, 1.0f);
 }
